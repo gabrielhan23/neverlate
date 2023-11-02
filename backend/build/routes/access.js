@@ -10,18 +10,18 @@ const user_1 = __importDefault(require("../schemas/user"));
 const router = (0, express_1.Router)();
 exports.USER_ROUTE = '/api/user';
 router.route(exports.USER_ROUTE).get((req, res, next) => {
-    console.log(req.user);
     if (req.isAuthenticated()) {
         user_1.default.find({ google_id: req.user }).then((user) => {
-            // res.json(user);
+            res.json(user);
             console.log(user);
+            next();
         });
-        res.send('welcome');
+        // res.send('welcome');
     }
     else {
         res.redirect(login_1.LOGIN_ROUTE);
+        next();
     }
-    next();
 });
 router.route('/').get((req, res, next) => {
     res.send('hi there');
