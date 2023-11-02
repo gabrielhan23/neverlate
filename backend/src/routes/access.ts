@@ -17,7 +17,6 @@ router.route(USER_ROUTE).get((req, res, next) => {
 		res.redirect(LOGIN_ROUTE)
 		next();
 	}
-	
 })
 
 router.route('/').get((req, res, next) => {
