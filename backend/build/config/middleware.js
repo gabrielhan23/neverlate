@@ -15,14 +15,14 @@ function loadMiddleware(app) {
     }));
     // app.use(helmet());
     app.use((0, express_session_1.default)({
-        secret: env.SESSION_SECRET,
+        secret: process.env.SESSION_SECRET,
         name: 'sessionId',
         resave: false,
         saveUninitialized: false,
         cookie: {
-            secure: true,
+            secure: false,
             httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24,
+            maxAge: 1000 * 60 * 60 * 24 * 30,
             sameSite: 'lax',
         },
         rolling: true,

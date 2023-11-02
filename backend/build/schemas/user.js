@@ -22,25 +22,37 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const http_1 = __importDefault(require("http"));
-const dotenv = __importStar(require("dotenv"));
-const express_1 = __importDefault(require("express"));
-const db_1 = __importDefault(require("./config/db"));
-const middleware_1 = __importDefault(require("./config/middleware"));
-const passport_1 = __importDefault(require("./config/passport"));
-const login_1 = __importDefault(require("./routes/login"));
-const access_1 = __importDefault(require("./routes/access"));
-dotenv.config();
-(0, db_1.default)();
-(0, passport_1.default)();
-const PORT = process.env.PORT;
-const app = (0, express_1.default)();
-const server = http_1.default.createServer(app);
-(0, middleware_1.default)(app);
-app.use(login_1.default);
-app.use(access_1.default);
-server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+const mongoose_1 = __importStar(require("mongoose"));
+const UserSchema = new mongoose_1.Schema({
+    google_id: {
+        type: String,
+        trim: true,
+        required: true,
+        immutable: true,
+        select: false,
+    },
+    access_token: {
+        type: String,
+        trim: true,
+        required: true,
+        immutable: true,
+    },
+    email: {
+        type: String,
+        trim: true,
+        required: true,
+        immutable: true,
+    },
+    username: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+    streak: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+});
+exports.default = mongoose_1.default.model('User', UserSchema);

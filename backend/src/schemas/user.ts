@@ -7,29 +7,29 @@ const UserSchema = new Schema({
 		required: true,
 		immutable: true,
 		select: false,
-	  },
-	  access_token: {
+	},
+	access_token: {
 		type: String,
 		trim: true,
 		required: true,
 		immutable: true,
-	  },
-	  email: {
+	},
+	email: {
 		type: String,
 		trim: true,
 		required: true,
 		immutable: true,
-	  },
-	  username: {
+	},
+	username: {
 		type: String,
 		trim: true,
 		required: true,
-	  },
-	  streak: {
+	},
+	streak: {
 		type: Number,
 		required: true,
 		default: 0,
-	  },
+	},
 })
 
 export default mongoose.model<Document>('User', UserSchema)
