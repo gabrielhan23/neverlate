@@ -23,7 +23,7 @@ router.route(exports.USER_ROUTE).get((req, res, next) => {
     }
 });
 router.route('/').get((req, res, next) => {
-    res.send('hi there');
+    res.send('hi there.');
     next();
 });
 exports.default = router;
