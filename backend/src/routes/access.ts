@@ -13,7 +13,6 @@ router.route(USER_ROUTE).get((req, res, next) => {
 			console.log(user);
 			next();
 		})
-		// res.send('welcome');
 	} else {
 		res.redirect(LOGIN_ROUTE)
 		next();

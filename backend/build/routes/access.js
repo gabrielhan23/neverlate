@@ -16,7 +16,6 @@ router.route(exports.USER_ROUTE).get((req, res, next) => {
             console.log(user);
             next();
         });
-        // res.send('welcome');
     }
     else {
         res.redirect(login_1.LOGIN_ROUTE);
